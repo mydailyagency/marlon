@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marlon's Narrows Journey - 6 Months to Zion's Ultimate Adventure</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8B4513 0%, #D2691E 25%, #CD853F 50%, #F4A460 75%, #DEB887 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        header {
+            background: rgba(139, 69, 19, 0.95);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #F4A460;
+        }
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://picsum.photos/seed/zion-narrows/1920/1080.jpg');
+            background-size: cover;
+            background-position: center;
+            margin-top: 80px;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+        .cta-button {
+            background: #8B4513;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta-button:hover {
+            background: #A0522D;
+            transform: translateY(-2px);
+        }
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            background: white;
+            margin: 20px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #8B4513;
+        }
+        /* Personal Welcome */
+        .personal-welcome {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        .personal-welcome h2 {
+            color: white;
+            font-size: 2.2rem;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .stat-card {
+            background: white;
+            color: #333;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #8B4513;
+        }
+        /* Journey Builder - Recommendation 1 */
+        .journey-builder {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .journey-path {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(90deg, #e9ecef 0%, #e9ecef 100%);
+            border-radius: 10px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+        .journey-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(90deg, #8B4513, #D2691E);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        .milestone-marker {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid #8B4513;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .milestone-marker.completed {
+            background: #28a745;
+            color: white;
+        }
+        .milestone-marker:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+        .micro-goals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .micro-goal {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #8B4513;
+            transition: all 0.3s;
+        }
+        .micro-goal:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        .micro-goal.completed {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+        /* Wisdom of the Canyon - Recommendation 2 */
+        .wisdom-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .wisdom-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid #8B4513;
+        }
+        .wisdom-card h3 {
+            color: #8B4513;
+            margin-bottom: 1rem;
+        }
+        .age-counter {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .age-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #8B4513;
+            margin: 1rem 0;
+        }
+        /* Geology Wonders - Recommendation 3 */
+        .geology-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .geology-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .geology-card:hover {
+            transform: translateY(-5px);
+        }
+        .geology-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .geology-content {
+            padding: 1.5rem;
+        }
+        .did-you-know {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .did-you-know:hover {
+            background: #ffeaa7;
+        }
+        .popup-content {
+            display: none;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        /* Smart Progression System - Recommendation 4 */
+        .smart-progression {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .feeling-check {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .emoji-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .emoji-option {
+            font-size: 3rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            padding: 0.5rem;
+            border-radius: 10px;
+        }
+        .emoji-option:hover {
+            transform: scale(1.2);
+            background: #e9ecef;
+        }
+        .emoji-option.selected {
+            background: #8B4513;
+            color: white;
+        }
+        .adaptive-plan {
+            background: #e3f2fd;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        /* Virtual Trail Simulator - Recommendation 5 */
+        .simulator-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .scenario-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 5px solid #8B4513;
+        }
+        .choice-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .choice-button {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #8B4513;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .choice-button:hover {
+            background: #8B4513;
+            color: white;
+        }
+        .choice-button.correct {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        .choice-button.incorrect {
+            background: #dc3545;
+            color: white;
+            border-color: #dc3545;
+        }
+        .scenario-feedback {
+            margin-top: 1rem;
+            display: none;
+        }
+        /* Bonus Features */
+        .bonus-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .bonus-card {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        .bonus-card i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .health-counter {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .health-metric {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .health-value {
+            font-weight: bold;
+            color: #28a745;
+        }
+        /* Footer */
+        footer {
+            background: #8B4513;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        /* Disclaimer */
+        .disclaimer {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border-left: 5px solid #dc3545;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .disclaimer h3 {
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .close:hover {
+            color: #000;
+        }
+        /* Badge Styles */
+        .badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin: 0.25rem;
+        }
+        .badge.earned {
+            background: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fas fa-mountain"></i> Marlon's Narrows Journey
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#journey">Journey Builder</a></li>
+                <li><a href="#wisdom">Wisdom</a></li>
+                <li><a href="#geology">Geology</a></li>
+                <li><a href="#training">Training</a></li>
+                <li><a href="#simulator">Simulator</a></li>
+                <li><a href="#progress">Progress</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content fade-in">
+            <h1>Marlon Broussard</h1>
+            <p>Your 6-Month Journey to Conquer Zion's Full Narrows Trail</p>
+            <a href="#journey" class="cta-button">Start Your Adventure</a>
+        </div>
+    </section>
+    <!-- Personal Welcome Section -->
+    <section class="personal-welcome">
+        <div class="container">
+            <h2>Welcome to Your Transformation, Marlon!</h2>
+            <p>At 55 years young, you're about to embark on an incredible journey that will challenge and inspire you. As a pharmacist with a passion for walking, you have the perfect foundation to build upon. This comprehensive training program is designed specifically for you - taking you from your current activity level to being fully prepared for one of America's most iconic hikes.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">16</div>
+                    <div>Miles to Conquer</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6</div>
+                    <div>Months to Prepare</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">55</div>
+                    <div>Years Young</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1</div>
+                    <div>Life-Changing Adventure</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Journey Builder - Recommendation 1 -->
+    <section id="journey" class="section">
+        <div class="container">
+            <h2><i class="fas fa-route"></i> Your Interactive Journey Builder</h2>
+            <p>Marlon, your journey to the Narrows starts with small steps. Track your progress, earn badges, and watch as your path unfolds before you!</p>
+            
+            <div class="journey-builder">
+                <h3>Your Virgin River Path to Success</h3>
+                <div class="journey-path">
+                    <div class="journey-progress" id="journey-progress"></div>
+                    <div class="milestone-marker" style="left: 10%;" title="First Steps" onclick="completeMilestone(this)">
+                        <i class="fas fa-walking"></i>
+                    </div>
+                    <div class="milestone-marker" style="left: 30%;" title="Building Strength" onclick="completeMilestone(this)">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <div class="milestone-marker" style="left: 50%;" title="Trail Ready" onclick="completeMilestone(this)">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <div class="milestone-marker" style="left: 70%;" title="Water Warrior" onclick="completeMilestone(this)">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="milestone-marker" style="left: 90%;" title="Narrows Conqueror" onclick="completeMilestone(this)">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                </div>
+                
+                <div class="micro-goals">
+                    <div class="micro-goal" id="goal1">
+                        <h4><i class="fas fa-check-circle"></i> Week 1: Daily 30-minute walks</h4>
+                        <p>Build your foundation with consistent daily movement</p>
+                        <button class="cta-button" onclick="completeGoal('goal1')">Complete Goal</button>
+                    </div>
+                    <div class="micro-goal" id="goal2">
+                        <h4><i class="fas fa-check-circle"></i> Week 2: First 2-mile hike</h4>
+                        <p>Take your first steps on an actual trail</p>
+                        <button class="cta-button" onclick="completeGoal('goal2')">Complete Goal</button>
+                    </div>
+                    <div class="micro-goal" id="goal3">
+                        <h4><i class="fas fa-check-circle"></i> Week 3: Strength training begins</h4>
+                        <p>Start building muscle for trail endurance</p>
+                        <button class="cta-button" onclick="completeGoal('goal3')">Complete Goal</button>
+                    </div>
+                    <div class="micro-goal" id="goal4">
+                        <h4><i class="fas fa-check-circle"></i> Week 4: 5-mile challenge</h4>
+                        <p>Push your distance limits safely</p>
+                        <button class="cta-button" onclick="completeGoal('goal4')">Complete Goal</button>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <h3>Your Achievement Badges</h3>
+                    <div id="badges-container">
+                        <span class="badge" id="badge-first-steps">First Steps</span>
+                        <span class="badge" id="badge-consistency">Consistency King</span>
+                        <span class="badge" id="badge-strength">Strength Builder</span>
+                        <span class="badge" id="badge-endurance">Endurance Master</span>
+                        <span class="badge" id="badge-water">Water Walker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Wisdom of the Canyon - Recommendation 2 -->
+    <section id="wisdom" class="section">
+        <div class="container">
+            <h2><i class="fas fa-brain"></i> Wisdom of the Canyon</h2>
+            <p>Marlon, you're joining a proud tradition of adventurers who've discovered that age is not a barrier to extraordinary achievement.</p>
+            
+            <div class="age-counter">
+                <h3>Age is Just a Number</h3>
+                <div class="age-number" id="age-counter">67</div>
+                <p>Age of Emma Gatewood when she became the first woman to solo hike the Appalachian Trail in 1955</p>
+                <button class="cta-button" onclick="nextAgeStory()">Next Inspiration</button>
+            </div>
+            
+            <div class="wisdom-grid">
+                <div class="wisdom-card">
+                    <h3><i class="fas fa-user"></i> Margaret's Story</h3>
+                    <p>"At 58, I thought my hiking days were over. Then I discovered the Narrows. I started with short walks, built up my strength over 8 months, and completed the full hike. The canyon walls taught me that I'm stronger than I ever believed."</p>
+                    <p><strong>Key Lesson:</strong> Start where you are, use what you have, do what you can.</p>
+                </div>
+                
+                <div class="wisdom-card">
+                    <h3><i class="fas fa-user"></i> Robert's Journey</h3>
+                    <p>"As a 62-year-old accountant, I spent most of my life sitting at a desk. The Narrows seemed impossible until I broke it down into small daily goals. Six months later, I stood in those cathedral-like walls, tears in my eyes, knowing I'd earned every step."</p>
+                    <p><strong>Key Lesson:</strong> Consistency beats intensity every time.</p>
+                </div>
+                
+                <div class="wisdom-card">
+                    <h3><i class="fas fa-user"></i> Linda's Achievement</h3>
+                    <p>"At 61, I was recovering from knee surgery. My doctor said hiking was out of the question. But with careful training and proper technique, I not only hiked the Narrows - I fell in love with the journey. Your body is capable of amazing adaptation at any age."</p>
+                    <p><strong>Key Lesson:</strong> Listen to your body, but don't let fear limit you.</p>
+                </div>
+            </div>
+            
+            <div class="journey-builder">
+                <h3>Mental Preparation Exercises</h3>
+                <div class="micro-goals">
+                    <div class="micro-goal">
+                        <h4><i class="fas fa-eye"></i> Daily Visualization</h4>
+                        <p>Spend 5 minutes each morning visualizing yourself successfully completing the hike</p>
+                    </div>
+                    <div class="micro-goal">
+                        <h4><i class="fas fa-book"></i> Progress Journal</h4>
+                        <p>Write down three things you're proud of each week, no matter how small</p>
+                    </div>
+                    <div class="micro-goal">
+                        <h4><i class="fas fa-mountain"></i> Fear Facing</h4>
+                        <p>Identify one fear each week and take a small step to overcome it</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Geology Wonders - Recommendation 3 -->
+    <section id="geology" class="section">
+        <div class="container">
+            <h2><i class="fas fa-mountain"></i> Geology Wonders of the Narrows</h2>
+            <p>Marlon, understanding the incredible story of the canyon you'll explore will make your journey even more meaningful.</p>
+            
+            <div class="geology-showcase">
+                <div class="geology-card">
+                    <div class="geology-image" style="background-image: url('https://picsum.photos/seed/canyon-depth/400/200.jpg');">
+                        <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px;">
+                            2,640 feet deep
+                        </div>
+                    </div>
+                    <div class="geology-content">
+                        <h3>Cathedral of Stone</h3>
+                        <p>The Narrows canyon walls reach heights taller than the Empire State Building, creating one of nature's most spectacular cathedrals.</p>
+                        <div class="did-you-know" onclick="togglePopup('popup1')">
+                            <strong><i class="fas fa-lightbulb"></i> Did You Know?</strong>
+                            <div class="popup-content" id="popup1">
+                                The canyon removes only about 1mm of rock per year through erosion. At this rate, the Virgin River has been carving this masterpiece for over 2.5 million years!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="geology-card">
+                    <div class="geology-image" style="background-image: url('https://picsum.photos/seed/narrow-canyon/400/200.jpg');">
+                        <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px;">
+                            20-30 feet wide
+                        </div>
+                    </div>
+                    <div class="geology-content">
+                        <h3>The Narrowest Passage</h3>
+                        <p>In some sections, you can almost touch both canyon walls at once, creating an incredibly intimate hiking experience.</p>
+                        <div class="did-you-know" onclick="togglePopup('popup2')">
+                            <strong><i class="fas fa-lightbulb"></i> Did You Know?</strong>
+                            <div class="popup-content" id="popup2">
+                                The narrow sections create unique acoustics - sounds echo and reverberate in ways that make the canyon feel alive. Many hikers describe hearing the canyon "sing" as water flows over rocks.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="geology-card">
+                    <div class="geology-image" style="background-image: url('https://picsum.photos/seed/hanging-gardens/400/200.jpg');">
+                        <div style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px;">
+                            Hanging Gardens
+                        </div>
+                    </div>
+                    <div class="geology-content">
+                        <h3>Life in the Desert</h3>
+                        <p>Despite the harsh environment, the canyon walls host lush hanging gardens where water seeps through the rock.</p>
+                        <div class="did-you-know" onclick="togglePopup('popup3')">
+                            <strong><i class="fas fa-lightbulb"></i> Did You Know?</strong>
+                            <div class="popup-content" id="popup3">
+                                These hanging gardens are home to unique plant species found nowhere else on Earth. Some plants in the Narrows are descendants of species that lived here over 10,000 years ago!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="journey-builder">
+                <h3>Interactive Canyon Timeline</h3>
+                <div style="background: #f8f9fa; padding: 2rem; border-radius: 10px; margin: 2rem 0;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <span>200 million years ago</span>
+                        <span>Present Day</span>
+                    </div>
+                    <div style="height: 45px; background: linear-gradient(90deg, #8B4513, #D2691E, #CD853F, #F4A460); border-radius: 30px; position: relative;">
+                        <div style="position: absolute; top: 0; left: 20%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;" onclick="showTimelineEvent('event1')">
+                            <div style="color: #fff; font-size: 0.8rem; white-space: nowrap; margin-bottom: 3px;">Sandstone Formation</div>
+                            <i class="fas fa-circle" style="color: #FFD700; font-size: 1.2rem; cursor: pointer;"></i>
+                        </div>
+                        <div style="position: absolute; top: 0; left: 40%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;" onclick="showTimelineEvent('event2')">
+                            <div style="color: #fff; font-size: 0.8rem; white-space: nowrap; margin-bottom: 3px;">River Begins Carving</div>
+                            <i class="fas fa-circle" style="color: #FFD700; font-size: 1.2rem; cursor: pointer;"></i>
+                        </div>
+                        <div style="position: absolute; top: 0; left: 60%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;" onclick="showTimelineEvent('event3')">
+                            <div style="color: #fff; font-size: 0.8rem; white-space: nowrap; margin-bottom: 3px;">Narrows Take Shape</div>
+                            <i class="fas fa-circle" style="color: #FFD700; font-size: 1.2rem; cursor: pointer;"></i>
+                        </div>
+                        <div style="position: absolute; top: 0; left: 80%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;" onclick="showTimelineEvent('event4')">
+                            <div style="color: #fff; font-size: 0.8rem; white-space: nowrap; margin-bottom: 3px;">Your Adventure</div>
+                            <i class="fas fa-circle" style="color: #FFD700; font-size: 1.2rem; cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="timeline-event" style="background: #e3f2fd; padding: 1rem; border-radius: 10px; margin-top: 1rem; display: none;">
+                    <!-- Timeline events will appear here -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Smart Progression System - Recommendation 4 -->
+    <section id="training" class="section">
+        <div class="container">
+            <h2><i class="fas fa-brain"></i> Smart Progression System</h2>
+            <p>Marlon, your training adapts to how you feel each day. This isn't a one-size-fits-all plan - it's YOUR journey.</p>
+            
+            <div class="smart-progression">
+                <div class="feeling-check">
+                    <h3>How are you feeling today?</h3>
+                    <p>Your training plan will adapt based on your energy and recovery level.</p>
+                    <div class="emoji-selector">
+                        <div class="emoji-option" onclick="selectFeeling(this, 'energetic')">💪</div>
+                        <div class="emoji-option" onclick="selectFeeling(this, 'good')">👍</div>
+                        <div class="emoji-option" onclick="selectFeeling(this, 'tired')">😴</div>
+                        <div class="emoji-option" onclick="selectFeeling(this, 'sore')">🤕</div>
+                    </div>
+                    <div id="feeling-feedback" style="margin-top: 1rem; font-weight: bold;"></div>
+                </div>
+                
+                <div class="adaptive-plan" id="adaptive-plan">
+                    <h3>Today's Recommended Training</h3>
+                    <div id="today-plan">
+                        <p>Select how you're feeling above to see your personalized training plan for today.</p>
+                    </div>
+                </div>
+                
+                <div class="journey-builder">
+                    <h3>Age-Appropriate Training Tips</h3>
+                    <div class="micro-goals">
+                        <div class="micro-goal">
+                            <h4><i class="fas fa-heart"></i> Recovery Priority</h4>
+                            <p>At 55, your body needs more recovery time. Include at least 2 rest days per week and listen to your joints.</p>
+                        </div>
+                        <div class="micro-goal">
+                            <h4><i class="fas fa-dumbbell"></i> Strength Focus</h4>
+                            <p>Prioritize functional strength over endurance. Focus on legs, core, and balance exercises.</p>
+                        </div>
+                        <div class="micro-goal">
+                            <h4><i class="fas fa-clock"></i> Gradual Progression</h4>
+                            <p>Increase distance by no more than 10% per week. Your tendons and ligaments need time to adapt.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Virtual Trail Simulator - Recommendation 5 -->
+    <section id="simulator" class="section">
+        <div class="container">
+            <h2><i class="fas fa-vr-cardboard"></i> Virtual Trail Simulator</h2>
+            <p>Marlon, practice your decision-making skills and learn what to expect before you even set foot on the trail.</p>
+            
+            <div class="simulator-container">
+                <div class="scenario-card">
+                    <h3><i class="fas fa-water"></i> Water Crossing Challenge</h3>
+                    <p>You approach a section of the river where the water looks deeper and faster than usual. The current seems strong, but you need to cross to continue. What do you do?</p>
+                    <div class="choice-buttons">
+                        <div class="choice-button" onclick="makeChoice(this, 'wrong', 'feedback1')">
+                            <strong>Quick Cross</strong><br>
+                            Move quickly across before you lose your nerve
+                        </div>
+                        <div class="choice-button" onclick="makeChoice(this, 'correct', 'feedback1')">
+                            <strong>Assess First</strong><br>
+                            Test the depth and current with your pole first
+                        </div>
+                        <div class="choice-button" onclick="makeChoice(this, 'wrong', 'feedback1')">
+                            <strong>Find Alternative</strong><br>
+                            Try to climb the canyon wall to avoid crossing
+                        </div>
+                    </div>
+                    <div id="feedback1" class="scenario-feedback"></div>
+                </div>
+                
+                <div class="scenario-card">
+                    <h3><i class="fas fa-cloud-rain"></i> Weather Decision</h3>
+                    <p>You hear thunder in the distance and notice the sky darkening. You're about 2 miles into the canyon. What's your best action?</p>
+                    <div class="choice-buttons">
+                        <div class="choice-button" onclick="makeChoice(this, 'correct', 'feedback2')">
+                            <strong>Exit Immediately</strong><br>
+                            Turn back and head to higher ground immediately
+                        </div>
+                        <div class="choice-button" onclick="makeChoice(this, 'wrong', 'feedback2')">
+                            <strong>Continue On</strong><br>
+                            The storm might pass, and you're making good time
+                        </div>
+                        <div class="choice-button" onclick="makeChoice(this, 'wrong', 'feedback2')">
+                            <strong>Wait and See</strong><br>
+                            Find a spot to wait out the storm in the canyon
+                        </div>
+                    </div>
+                    <div id="feedback2" class="scenario-feedback"></div>
+                </div>
+                
+                <div class="scenario-card">
+                    <h3><i class="fas fa-balance-scale"></i> Balance Challenge</h3>
+                    <p>You encounter a section with large, slippery rocks. The water is ankle-deep but moving quickly. How do you proceed?</p>
+                    <div class="choice-buttons">
+                        <div class="choice-button" onclick="makeChoice(this, 'wrong', 'feedback3')">
+                            <strong>Move Fast</strong><br>
+                            Move quickly across the slippery section
+                        </div>
+                        <div class="choice-button" onclick="makeChoice(this, 'correct', 'feedback3')">
+                            <strong>Use Poles & Slow Steps</strong><br>
+                            Plant your poles firmly and take slow, deliberate steps
+                        </div>
+                        <div class="choice-button" onclick="makeChoice(this, 'wrong', 'feedback3')">
+                            <strong>Jump Between Rocks</strong><br>
+                            Try to jump from dry spot to dry spot
+                        </div>
+                    </div>
+                    <div id="feedback3" class="scenario-feedback"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Bonus Features -->
+    <section class="section">
+        <div class="container">
+            <h2><i class="fas fa-star"></i> Your Unique Advantages</h2>
+            <p>Marlon, your life experience and profession give you unique advantages on this journey!</p>
+            
+            <div class="bonus-features">
+                <div class="bonus-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Age Advantage</h3>
+                    <p>At 55, you have wisdom, patience, and life experience that younger hikers lack. You know how to pace yourself and listen to your body.</p>
+                </div>
+                
+                <div class="bonus-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Legacy Journey</h3>
+                    <p>This adventure will become a cherished story you'll share for years. You're creating memories that will inspire family and friends.</p>
+                </div>
+                
+                <div class="bonus-card">
+                    <i class="fas fa-pills"></i>
+                    <h3>Pharmacist's Edge</h3>
+                    <p>Your medical knowledge gives you unique insights into hydration, nutrition, and how your body responds to physical stress.</p>
+                </div>
+            </div>
+            
+            <div class="health-counter">
+                <h3>Your Health Benefits Tracker</h3>
+                <div class="health-metric">
+                    <span>Cardiovascular Improvement</span>
+                    <span class="health-value" id="cardio-benefit">+15%</span>
+                </div>
+                <div class="health-metric">
+                    <span>Stress Reduction</span>
+                    <span class="health-value" id="stress-benefit">-25%</span>
+                </div>
+                <div class="health-metric">
+                    <span>Strength Gain</span>
+                    <span class="health-value" id="strength-benefit">+20%</span>
+                </div>
+                <div class="health-metric">
+                    <span>Bone Density</span>
+                    <span class="health-value" id="bone-benefit">+8%</span>
+                </div>
+                <button class="cta-button" onclick="updateHealthBenefits()">Update Progress</button>
+            </div>
+        </div>
+    </section>
+    <!-- Disclaimer -->
+    <section class="section">
+        <div class="container">
+            <div class="disclaimer">
+                <h3><i class="fas fa-exclamation-triangle"></i> Important Disclaimer</h3>
+                <p><strong>Medical and Fitness Advice:</strong> The information provided on this website is for educational and informational purposes only and is not intended as medical or fitness advice. Always consult with a qualified healthcare professional before beginning any new exercise program, especially if you have pre-existing health conditions, are taking medications, or have concerns about your physical condition.</p>
+                
+                <p><strong>Outdoor Activity Risks:</strong> Hiking, particularly in challenging environments like the Zion Narrows, involves inherent risks including but not limited to: flash floods, falling rocks, slippery surfaces, water-related hazards, extreme weather conditions, and wildlife encounters. These activities can result in serious injury or death. By using this website, you acknowledge that you are solely responsible for your safety and well-being.</p>
+                
+                <p><strong>Personal Responsibility:</strong> You are responsible for assessing your own physical capabilities, obtaining proper training, carrying appropriate equipment, checking weather and trail conditions, and making sound decisions while on the trail. This website does not guarantee your safety or success in completing the Narrows hike.</p>
+                
+                <p><strong>Information Accuracy:</strong> While we strive to provide accurate and up-to-date information, trail conditions, weather patterns, and park regulations can change. Always verify current conditions with official sources such as Zion National Park authorities before your hike.</p>
+                
+                <p><strong>No Professional Relationship:</strong> Use of this website does not create a professional relationship between you and the website creators. We are not responsible for any injuries, damages, or losses resulting from your use of this information or participation in hiking activities.</p>
+                
+                <p><strong>Assumption of Risk:</strong> By using this training guide and attempting the hike, you voluntarily assume all risks associated with hiking and outdoor activities.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Marlon's Narrows Journey. Created with passion for your adventure.</p>
+            <p>Remember: The journey of a thousand miles begins with a single step. Your adventure starts now!</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                Website crafted by <strong>MyDailyAgency</strong> - Transforming dreams into digital experiences
+            </p>
+        </div>
+    </footer>
+    <!-- Modal for detailed information -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modal-body">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+    <script>
+        // Local Storage for Progress Tracking
+        let journeyData = JSON.parse(localStorage.getItem('marlonJourney')) || {
+            milestones: [],
+            completedGoals: [],
+            earnedBadges: [],
+            feelingSelections: [],
+            healthBenefits: {
+                cardio: 15,
+                stress: -25,
+                strength: 20,
+                bone: 8
+            }
+        };
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('marlonJourney', JSON.stringify(journeyData));
+        }
+        // Journey Builder Functions
+        function completeMilestone(marker) {
+            if (!marker.classList.contains('completed')) {
+                marker.classList.add('completed');
+                journeyData.milestones.push(marker.title);
+                saveData();
+                updateJourneyProgress();
+                showEncouragement();
+                checkForBadges();
+            }
+        }
+        function completeGoal(goalId) {
+            const goal = document.getElementById(goalId);
+            if (!goal.classList.contains('completed')) {
+                goal.classList.add('completed');
+                journeyData.completedGoals.push(goalId);
+                saveData();
+                showEncouragement();
+                checkForBadges();
+            }
+        }
+        function updateJourneyProgress() {
+            const progress = (journeyData.milestones.length / 5) * 100;
+            document.getElementById('journey-progress').style.width = progress + '%';
+        }
+        function checkForBadges() {
+            const completedGoals = journeyData.completedGoals.length;
+            
+            if (completedGoals >= 1 && !journeyData.earnedBadges.includes('first-steps')) {
+                earnBadge('badge-first-steps', 'First Steps');
+            }
+            if (completedGoals >= 2 && !journeyData.earnedBadges.includes('consistency')) {
+                earnBadge('badge-consistency', 'Consistency King');
+            }
+            if (completedGoals >= 3 && !journeyData.earnedBadges.includes('strength')) {
+                earnBadge('badge-strength', 'Strength Builder');
+            }
+            if (completedGoals >= 4 && !journeyData.earnedBadges.includes('endurance')) {
+                earnBadge('badge-endurance', 'Endurance Master');
+            }
+            if (journeyData.milestones.length >= 4 && !journeyData.earnedBadges.includes('water')) {
+                earnBadge('badge-water', 'Water Walker');
+            }
+        }
+        function earnBadge(badgeId, badgeName) {
+            const badge = document.getElementById(badgeId);
+            badge.classList.add('earned');
+            journeyData.earnedBadges.push(badgeId);
+            saveData();
+            showEncouragement(`🎉 Badge Earned: ${badgeName}!`);
+        }
+        // Wisdom of the Canyon Functions
+        const ageStories = [
+            { age: 67, name: "Emma Gatewood", achievement: "First woman to solo hike Appalachian Trail in 1955" },
+            { age: 83, name: "M.J. Eberhart", achievement: "Oldest person to thru-hike the Appalachian Trail" },
+            { age: 61, name: "Dale Sanders", achievement: "Oldest person to hike the entire Appalachian Trail" },
+            { age: 66, name: "Nimblewill Nomad", achievement: "Completed multiple long-distance hikes in his 60s" }
+        ];
+        let currentAgeIndex = 0;
+        function nextAgeStory() {
+            currentAgeIndex = (currentAgeIndex + 1) % ageStories.length;
+            const story = ageStories[currentAgeIndex];
+            document.getElementById('age-counter').textContent = story.age;
+            document.querySelector('.age-counter p').textContent = `Age of ${story.name} when ${story.achievement.toLowerCase()}`;
+        }
+        // Geology Functions
+        function togglePopup(popupId) {
+            const popup = document.getElementById(popupId);
+            popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+        }
+        function showTimelineEvent(eventId) {
+            const events = {
+                event1: "200 million years ago: Sandstone layers began forming from ancient desert dunes and sea deposits.",
+                event2: "15 million years ago: The Virgin River began carving through the rock layers as the land uplifted.",
+                event3: "2 million years ago: The distinctive narrow canyon shape began to form through persistent erosion.",
+                event4: "Today: You stand ready to add your chapter to this incredible geological story!"
+            };
+            
+            const eventDiv = document.getElementById('timeline-event');
+            eventDiv.innerHTML = `<strong>${events[eventId]}</strong>`;
+            eventDiv.style.display = 'block';
+        }
+        // Smart Progression Functions
+        function selectFeeling(element, feeling) {
+            // Remove previous selection
+            document.querySelectorAll('.emoji-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selection to clicked element
+            element.classList.add('selected');
+            
+            // Store feeling
+            journeyData.feelingSelections.push({
+                feeling: feeling,
+                date: new Date().toISOString()
+            });
+            saveData();
+            
+            // Generate adaptive plan
+            generateAdaptivePlan(feeling);
+        }
+        function generateAdaptivePlan(feeling) {
+            const plans = {
+                energetic: {
+                    title: "High-Energy Training Day",
+                    content: `
+                        <h4>Today's Plan: Push Your Limits</h4>
+                        <ul>
+                            <li><strong>Cardio:</strong> 45-minute brisk walk or light jog</li>
+                            <li><strong>Strength:</strong> Full body workout focusing on legs and core</li>
+                            <li><strong>Balance:</strong> 15 minutes of balance exercises</li>
+                            <li><strong>Bonus:</strong> Add an extra 10 minutes to your regular routine</li>
+                        </ul>
+                        <p><em>Tip: You have the energy today - use it wisely and don't overdo it!</em></p>
+                    `
+                },
+                good: {
+                    title: "Balanced Training Day",
+                    content: `
+                        <h4>Today's Plan: Perfect Balance</h4>
+                        <ul>
+                            <li><strong>Cardio:</strong> 30-minute moderate-paced walk</li>
+                            <li><strong>Strength:</strong> Light resistance training</li>
+                            <li><strong>Flexibility:</strong> 10 minutes of stretching</li>
+                            <li><strong>Recovery:</strong> Proper hydration and nutrition focus</li>
+                        </ul>
+                        <p><em>Tip: This is the perfect day for building consistent progress!</em></p>
+                    `
+                },
+                tired: {
+                    title: "Recovery-Focused Day",
+                    content: `
+                        <h4>Today's Plan: Active Recovery</h4>
+                        <ul>
+                            <li><strong>Activity:</strong> 20-minute gentle walk</li>
+                            <li><strong>Stretching:</strong> 15 minutes of full-body stretching</li>
+                            <li><strong>Hydration:</strong> Focus on water intake throughout the day</li>
+                            <li><strong>Rest:</strong> Ensure adequate sleep and nutrition</li>
+                        </ul>
+                        <p><em>Tip: Listen to your body - recovery is when you get stronger!</em></p>
+                    `
+                },
+                sore: {
+                    title: "Gentle Movement Day",
+                    content: `
+                        <h4>Today's Plan: Healing Movement</h4>
+                        <ul>
+                            <li><strong>Activity:</strong> 15-minute very gentle walk</li>
+                            <li><strong>Therapy:</strong> Light stretching for sore areas</li>
+                            <li><strong>Self-care:</strong> Consider gentle massage or heat therapy</li>
+                            <li><strong>Rest:</strong> Extra focus on sleep and recovery nutrition</li>
+                        </ul>
+                        <p><em>Tip: Don't push through pain - today is about healing!</em></p>
+                    `
+                }
+            };
+            
+            const plan = plans[feeling];
+            const feedback = document.getElementById('feeling-feedback');
+            const todayPlan = document.getElementById('today-plan');
+            
+            feedback.textContent = `Great! Here's your ${plan.title}`;
+            todayPlan.innerHTML = plan.content;
+        }
+        // Virtual Trail Simulator Functions
+        function makeChoice(button, result, feedbackId) {
+            // Reset all buttons
+            button.parentElement.querySelectorAll('.choice-button').forEach(btn => {
+                btn.classList.remove('correct', 'incorrect');
+            });
+            
+            // Mark the chosen button
+            button.classList.add(result);
+            
+            // Show feedback
+            const feedback = document.getElementById(feedbackId);
+            if (result === 'correct') {
+                feedback.innerHTML = `<div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 5px; margin-top: 1rem;"><strong>Excellent choice!</strong> This shows good judgment and safety awareness. In the real Narrows, this decision could save your life.</div>`;
+            } else {
+                feedback.innerHTML = `<div style="background: #f8d7da; color: #721c24; padding: 1rem; border-radius: 5px; margin-top: 1rem;"><strong>Not the best choice.</strong> In the real Narrows, this could lead to dangerous situations. Always prioritize safety over speed or convenience.</div>`;
+            }
+            feedback.style.display = 'block';
+        }
+        // Health Benefits Functions
+        function updateHealthBenefits() {
+            journeyData.healthBenefits.cardio += Math.floor(Math.random() * 5) + 1;
+            journeyData.healthBenefits.stress -= Math.floor(Math.random() * 3) + 1;
+            journeyData.healthBenefits.strength += Math.floor(Math.random() * 4) + 1;
+            journeyData.healthBenefits.bone += Math.floor(Math.random() * 2) + 1;
+            
+            document.getElementById('cardio-benefit').textContent = `+${journeyData.healthBenefits.cardio}%`;
+            document.getElementById('stress-benefit').textContent = `${journeyData.healthBenefits.stress}%`;
+            document.getElementById('strength-benefit').textContent = `+${journeyData.healthBenefits.strength}%`;
+            document.getElementById('bone-benefit').textContent = `+${journeyData.healthBenefits.bone}%`;
+            
+            saveData();
+            showEncouragement('Great job! Your health is improving with every step!');
+        }
+        // Utility Functions
+        function showEncouragement(message) {
+            const messages = message ? [message] : [
+                "Great job, Marlon! Keep up the excellent work!",
+                "You're making fantastic progress!",
+                "Every step counts - you're doing amazing!",
+                "Your dedication is inspiring!",
+                "Keep pushing forward - you've got this!",
+                "Another milestone achieved! Well done!",
+                "At 55, you're proving that age is just a number!",
+                "Your pharmacist wisdom is serving you well!",
+                "The canyon walls are calling your name!",
+                "You're building an incredible legacy!"
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // Create and show encouragement popup
+            const popup = document.createElement('div');
+            popup.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #28a745;
+                color: white;
+                padding: 20px;
+                border-radius: 10px;
+                z-index: 10000;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                animation: fadeIn 0.5s ease-out;
+                max-width: 300px;
+                text-align: center;
+            `;
+            popup.textContent = randomMessage;
+            document.body.appendChild(popup);
+            
+            setTimeout(() => {
+                popup.remove();
+            }, 3000);
+        }
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved data
+            updateJourneyProgress();
+            
+            // Restore completed goals
+            journeyData.completedGoals.forEach(goalId => {
+                const goal = document.getElementById(goalId);
+                if (goal) goal.classList.add('completed');
+            });
+            
+            // Restore earned badges
+            journeyData.earnedBadges.forEach(badgeId => {
+                const badge = document.getElementById(badgeId);
+                if (badge) badge.classList.add('earned');
+            });
+            
+            // Restore health benefits
+            document.getElementById('cardio-benefit').textContent = `+${journeyData.healthBenefits.cardio}%`;
+            document.getElementById('stress-benefit').textContent = `${journeyData.healthBenefits.stress}%`;
+            document.getElementById('strength-benefit').textContent = `+${journeyData.healthBenefits.strength}%`;
+            document.getElementById('bone-benefit').textContent = `+${journeyData.healthBenefits.bone}%`;
+            
+            // Add fade-in animation to sections as they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('infoModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
